@@ -2,7 +2,6 @@ package com.example.calculator
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
@@ -126,7 +125,7 @@ class MainScreen : AppCompatActivity() {
     private fun calculateResults(): String {
         val digitOperators = digitOperators()
         if(digitOperators.isEmpty()) return ""
-        val multiplydivision = MultiplyDivision(digitOperators)
+        val multiplydivision = multiplyDivision(digitOperators)
         if(multiplydivision.isEmpty()) return ""
         val result = addOrSubtract(multiplydivision)
         return result.toString()
@@ -150,7 +149,7 @@ class MainScreen : AppCompatActivity() {
         return result
     }
 
-    private fun MultiplyDivision(passedList: MutableList<Any>): MutableList<Any> {
+    private fun multiplyDivision(passedList: MutableList<Any>): MutableList<Any> {
         var list = passedList
         while(list.contains('/')||list.contains('*')){
             list  = calcTimesDivision(list)
